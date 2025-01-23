@@ -1,38 +1,7 @@
 <%= turbo_stream.replace "short_link_frame" do %>
-  <% if @short_link.persisted? %>
-    <div id="shortened-url">
-      <h2>Shortened URL:</h2>
-      <p>
-        <strong>Short URL:</strong>
-        <%= link_to "#{root_url}#{@short_link.short_code}", "#{root_url}#{@short_link.short_code}", target: "_blank" %>
-      </p>
-      <p>
-        <strong>Original URL:</strong>
-        <%= link_to @short_link.target_url, @short_link.target_url, target: "_blank" %>
-      </p>
-      <p>
-        <strong>Title:</strong>
-        <%= @short_link.title %>
-      </p>
-    </div>
-  <% else %>
-    <div id="error-explanation">
-      <h2>Errors:</h2>
-      <ul>
-        <% @short_link.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <%= form_with(
-        model: ShortLink.new,
-        url: short_links_path,
-        method: :post,
-        local: true
-      ) do |form| %>
-    <%= form.url_field :target_url, placeholder: "Enter your URL here" %>
-    <%= form.submit "Shorten URL" %>
+  <%= turbo_frame_tag "short_link_frame" do %>
+    <% if @short_link.persisted? %>
+      <%= render(Card::ShrinkLinkResultComponent.new(link: root_url + @short_link.short_code)) %>
+    <% end %>
   <% end %>
 <% end %>
