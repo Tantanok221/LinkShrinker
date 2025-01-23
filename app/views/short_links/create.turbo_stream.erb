@@ -1,7 +1,7 @@
 <%= turbo_stream.replace "short_link_frame" do %>
   <%= turbo_frame_tag "short_link_frame" do %>
     <% if @short_link.persisted? %>
-      <%= render(Card::ShrinkLinkResultComponent.new(link: root_url + @short_link.short_code)) %>
+      <%= render(Card::ShrinkLinkResultComponent.new(link: "#{root_url}r/#{@short_link.short_code}")) %>
     <% end %>
   <% end %>
 <% end %>
