@@ -1,13 +1,6 @@
 <%= render(Sections::HeaderComponent.new) %>
 <%= render(Sections::BodyComponent.new) do %>
   <%= turbo_frame_tag "short_link_frame" do %>
-    <%= form_with(
-          model: @short_link,
-          url: short_links_path,
-          method: :post,
-        ) do |form| %>
-      <%= form.url_field :target_url, placeholder: "Enter your URL here" %>
-      <%= form.submit "Shorten URL" %>
-    <% end %>
+    <%= render(Forms::LinkSubmitComponent.new(short_link: @short_link)) %>
   <% end %>
 <% end %>

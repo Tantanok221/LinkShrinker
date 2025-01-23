@@ -3,6 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@theme {
+    --muted-foreground: "#64748B";
+    --primary-foreground: "#F8FAFC";
+}
+
 /*
 
 @layer components {

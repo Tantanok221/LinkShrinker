@@ -1,0 +1,8 @@
+  <%= form_with(
+        model: @short_link,
+        url: short_links_path,
+        method: :post,
+        ) do |form| %>
+    <%= form.url_field :target_url,class: "py-2 px-2 border-1 border-color-muted-foreground" , placeholder: "Enter your URL here" %>
+    <%= form.submit "Shorten URL", class: "py=2 px-4 bg-primary-foreground rounded"%>
+  <% end %>
