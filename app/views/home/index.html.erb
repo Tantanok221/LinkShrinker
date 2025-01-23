@@ -1,13 +1,13 @@
-<h1>URL Shortener</h1>
-<%= turbo_frame_tag "short_link_frame" do %>
-  <%= form_with(
-        model: @short_link,
-        url: short_links_path,
-        method: :post,
-        local: true,
-      ) do |form| %>
-    <%= form.url_field :target_url, placeholder: "Enter your URL here" %>
-    <%= form.submit "Shorten URL" %>
+<%= render(Sections::HeaderComponent.new) %>
+<%= render(Sections::BodyComponent.new) do %>
+  <%= turbo_frame_tag "short_link_frame" do %>
+    <%= form_with(
+          model: @short_link,
+          url: short_links_path,
+          method: :post,
+        ) do |form| %>
+      <%= form.url_field :target_url, placeholder: "Enter your URL here" %>
+      <%= form.submit "Shorten URL" %>
+    <% end %>
   <% end %>
-
 <% end %>
