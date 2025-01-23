@@ -379,6 +379,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kamal
+  nokogiri (~> 1.18)
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.1)
