@@ -1,11 +1,15 @@
-# app/controllers/short_links_controller.rb
 class ShortLinksController < ApplicationController
   def create
     @short_link = ShortLink.new(short_link_params)
-    if @short_link.save
-      redirect_to @short_link
-    else
-      render 'home/index'
+    puts "Params: #{params.inspect}"
+    puts "ShortLink: #{@short_link.inspect}"
+    respond_to do |format|
+      if @short_link.save
+        format.turbo_stream
+        format.html { redirect_to root_path }
+      else
+        put "Something went wrong!"
+      end
     end
   end
 

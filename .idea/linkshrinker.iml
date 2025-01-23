@@ -55,6 +55,7 @@
     <orderEntry type="library" scope="PROVIDED" name="concurrent-ruby (v1.3.5, mise: 3.4.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="connection_pool (v2.5.0, mise: 3.4.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.6, mise: 3.4.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="csv (v3.3.2, mise: 3.4.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="date (v3.4.1, mise: 3.4.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="debug (v1.10.0, mise: 3.4.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="devise (v4.9.4, mise: 3.4.1) [gem]" level="application" />
@@ -64,6 +65,7 @@
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.13.1, mise: 3.4.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="et-orbi (v1.2.11, mise: 3.4.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="fugit (v1.11.1, mise: 3.4.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="geocoder (v1.8.5, mise: 3.4.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v1.2.1, mise: 3.4.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.14.7, mise: 3.4.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="importmap-rails (v2.1.0, mise: 3.4.1) [gem]" level="application" />
@@ -280,6 +282,9 @@
     <entry key="config/cable">
       <value>file://$MODULE_DIR$/config/cable.yml</value>
     </entry>
+    <entry key="config/cache">
+      <value>file://$MODULE_DIR$/config/cache.yml</value>
+    </entry>
     <entry key="config/database">
       <value>file://$MODULE_DIR$/config/database.yml</value>
     </entry>
@@ -301,8 +306,8 @@
     <entry key="config/routes.rb">
       <value>file://$MODULE_DIR$/config/routes.rb</value>
     </entry>
-    <entry key="config/secrets">
-      <value>file://$MODULE_DIR$/config</value>
+    <entry key="config/solid_cache">
+      <value>file://$MODULE_DIR$/config/solid_cache.yml</value>
     </entry>
     <entry key="db">
       <value>file://$MODULE_DIR$/db</value>
@@ -336,6 +341,10 @@
     </entry>
     <entry key="public/stylesheets">
       <value>file://$MODULE_DIR$/public/stylesheets</value>
+    </entry>
+    <entry key="test/mailers/previews">
+      <value>file://$MODULE_DIR$/test/mailers/previews</value>
+      <value>file://$MODULE_DIR$/test/mailers/previews</value>
     </entry>
     <entry key="tmp">
       <value>file://$MODULE_DIR$/tmp</value>
