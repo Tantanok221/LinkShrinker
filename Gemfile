@@ -65,3 +65,7 @@ end
 gem "nokogiri", "~> 1.18"
 
 gem "geocoder", "~> 1.8"
+
+gem "tailwindcss-ruby", "= 4.0.0.beta.9"
+
+gem "tailwindcss-rails", "~> 3.3"
