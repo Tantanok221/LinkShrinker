@@ -1,6 +1,8 @@
 <%= render(Sections::HeaderComponent.new) %>
 <%= render(Sections::BodyComponent.new) do %>
-  <%= turbo_frame_tag "short_link_frame" do %>
+  <div class="py-8 gap-1.5 flex items-center justify-center flex-col">
+    <%= render(TitleComponent.new(text: "Shrink Your Link In Seconds")) %>
     <%= render(Forms::LinkSubmitComponent.new(short_link: @short_link)) %>
-  <% end %>
+    <%= turbo_frame_tag "short_link_frame"  %>
+  </div>
 <% end %>
