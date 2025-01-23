@@ -63,3 +63,5 @@ group :test do
 end
 
 gem "nokogiri", "~> 1.18"
+
+gem "geocoder", "~> 1.8"
