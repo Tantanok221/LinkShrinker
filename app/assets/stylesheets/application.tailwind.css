@@ -4,8 +4,8 @@
 @tailwind utilities;
 
 @theme {
-    --muted-foreground: "#64748B";
-    --primary-foreground: "#F8FAFC";
+    --color-muted-foreground: #64748B;
+    --color-primary-foreground: #F8FAFC;
 }
 
 /*
