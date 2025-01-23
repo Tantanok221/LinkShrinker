@@ -1,12 +1,9 @@
 class ShortLinksController < ApplicationController
   def create
     @short_link = ShortLink.new(short_link_params)
-    puts "Params: #{params.inspect}"
-    puts "ShortLink: #{@short_link.inspect}"
     respond_to do |format|
       if @short_link.save
         format.turbo_stream
-        format.html { redirect_to root_path }
       else
         put "Something went wrong!"
       end
@@ -20,7 +17,18 @@ class ShortLinksController < ApplicationController
   def redirect
     @short_link = ShortLink.find_by(short_code: params[:short_code])
     @short_link.increment!(:clicks_count)
-    Click.create!(short_link: @short_link, ip_address: request.remote_ip)
+    ip_address = request.remote_ip
+    location = Geocoder.search(ip_address).first
+
+    Click.create!(short_link: @short_link,
+                  ip_address: request.remote_ip,
+                  user_agent: request.user_agent,
+                  referrer: request.referrer,
+                  country: location.country,
+                  region: location.region,
+                  city: location.city,
+                  created_at: Time.now,
+                  updated_at: Time.now,)
     redirect_to @short_link.target_url, allow_other_host: true
   end
 
