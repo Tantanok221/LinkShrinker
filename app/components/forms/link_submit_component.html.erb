@@ -2,7 +2,8 @@
       model: @short_link,
       url: short_links_path,
       method: :post,
+      class: "md:w-2/3 lg:w-1/3 flex flex-row gap-2"
     ) do |form| %>
-  <%= form.url_field :target_url, class: "py-2 px-2 pr-24 border-1 border-slate-200 text-muted-foreground rounded-md", placeholder: "Enter your URL here",required: true %>
+  <%= form.url_field :target_url, class: "py-2 px-2 w-full  border-1 border-slate-200 text-muted-foreground rounded-md", placeholder: "Enter your URL here",required: true %>
   <%= form.submit "Shrink!", class: "py-2 px-4 bg-slate-900 text-white rounded-md" %>
 <% end %>
