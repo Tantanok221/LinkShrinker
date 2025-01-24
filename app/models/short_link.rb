@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class ShortLink < ApplicationRecord
   validates :target_url, presence: true, format: URI::DEFAULT_PARSER.make_regexp(%w[http https])
   validates :short_code, presence: true, uniqueness: true, length: { maximum: 15 }
@@ -18,10 +20,13 @@ class ShortLink < ApplicationRecord
   end
 
   def extract_title
+    Rails.logger.info "Target url from the incoming request: #{target_url}"
     doc = Nokogiri::HTML(URI.open(target_url))
-    self.title = doc.at_css('title').text.strip
+    self.title = doc.at_css("title").text.strip
+    Rails.logger.info "Title from the incoming url: #{title}"
     save
-  rescue StandardError
+  rescue StandardError => e
     # Handle errors (e.g., invalid URL, connection issues)
+    Rails.logger.error "Failed to extract title for URL: #{target_url}. Error: #{e.message}"
   end
 end

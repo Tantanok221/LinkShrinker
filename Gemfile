@@ -71,3 +71,7 @@ gem "geocoder", "~> 1.8"
 gem "tailwindcss-ruby", "= 4.0.0.beta.9"
 
 gem "tailwindcss-rails", "~> 3.3"
+
+gem "open-uri"
+gem 'chartkick'
+gem 'groupdate'
