@@ -1,4 +1,5 @@
-<%= turbo_stream.replace "analytics" do %>
+<%= turbo_stream_from "analytic/#{@short_link.short_code}" %>
+<div id="analytics">
   <%= render AnalyticsComponent.new(
     short_link: @short_link,
     total_clicks: @short_link.clicks.count,
@@ -6,4 +7,4 @@
     geo_data: { country: @clicks_by_country, region: @clicks_by_region, city: @clicks_by_city },
     referrer_data: @clicks_by_referrer
   ) %>
-<% end %>
+</div>
