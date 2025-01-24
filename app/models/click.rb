@@ -9,21 +9,7 @@ class Click < ApplicationRecord
       "analytic/#{short_link.short_code}",
       target: "analytics",
       html: ApplicationController.render(
-        AnalyticsComponent.new(
-          short_link: short_link,
-          total_clicks: short_link.clicks.count,
-          time_data: {
-            daily: short_link.clicks.group_by_day(:created_at).count,
-            weekly: short_link.clicks.group_by_week(:created_at).count,
-            monthly: short_link.clicks.group_by_month(:created_at).count
-          },
-          geo_data: {
-            country: short_link.clicks.group(:country).count,
-            region: short_link.clicks.group(:region).count,
-            city: short_link.clicks.group(:city).count
-          },
-          referrer_data: short_link.clicks.group(:referrer).count
-        ),
+        AnalyticsComponent.new(analytics_data: short_link.analytics_data),
         layout: false
       ),
 

@@ -33,4 +33,22 @@ class ShortLink < ApplicationRecord
   def normalize_target_url
     self.target_url = UrlNormalizer.normalize(target_url)
   end
+
+  def analytics_data
+    AnalyticsData.new(
+      short_link: self,
+      total_clicks: clicks.count,
+      time_data: {
+        daily: clicks.group_by_day(:created_at).count,
+        weekly: clicks.group_by_week(:created_at).count,
+        monthly: clicks.group_by_month(:created_at).count
+      },
+      geo_data: {
+        country: clicks.group(:country).count,
+        region: clicks.group(:region).count,
+        city: clicks.group(:city).count
+      },
+      referrer_data: clicks.group(:referrer).count
+    )
+  end
 end
