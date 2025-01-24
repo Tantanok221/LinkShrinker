@@ -1,0 +1,17 @@
+<div class="bg-white p-6 rounded-lg shadow-sm">
+  <h2 class="text-xl font-semibold text-gray-800 mb-4">Time Analysis</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="p-4 bg-gray-50 rounded-lg">
+      <h3 class="text-sm font-medium text-gray-600 mb-2">Daily</h3>
+      <%= line_chart daily, height: "200px" %>
+    </div>
+    <div class="p-4 bg-gray-50 rounded-lg">
+      <h3 class="text-sm font-medium text-gray-600 mb-2">Weekly</h3>
+      <%= line_chart weekly, height: "200px" %>
+    </div>
+    <div class="p-4 bg-gray-50 rounded-lg">
+      <h3 class="text-sm font-medium text-gray-600 mb-2">Monthly</h3>
+      <%= column_chart monthly, height: "200px" %>
+    </div>
+  </div>
+</div>

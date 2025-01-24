@@ -1,11 +1,17 @@
-<%= turbo_stream.replace "analytics_container" do %>
-  <%= render "analytics/show",
-             short_link: @short_link,
-             total_clicks: @total_clicks,
-             clicks_by_day: @clicks_by_day,
-             clicks_by_country: @clicks_by_country,
-             clicks_by_region: @clicks_by_region,
-             clicks_by_city: @clicks_by_city,
-             clicks_by_referrer: @clicks_by_referrer
-  %>
+<%= turbo_stream.replace "analytics" do %>
+  <%= render Analytic::MainComponent.new(
+    short_link: @short_link,
+    total_clicks: @short_link.clicks.count,
+    time_data: {
+      daily: @clicks_by_day,
+      weekly: @clicks_by_week,
+      monthly: @clicks_by_month
+    },
+    geo_data: {
+      country: @clicks_by_country,
+      region: @clicks_by_region,
+      city: @clicks_by_city
+    },
+    referrer_data: @clicks_by_referrer
+  ) %>
 <% end %>

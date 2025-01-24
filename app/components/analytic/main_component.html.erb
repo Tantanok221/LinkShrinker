@@ -1,0 +1,17 @@
+<div id="analytics" class="p-6 space-y-8 bg-gray-50 min-h-screen">
+  <%= render HeaderComponent.new(short_link: short_link, total_clicks: total_clicks) %>
+
+  <%= render TimeAnalysisComponent.new(
+    daily: time_data[:daily],
+    weekly: time_data[:weekly],
+    monthly: time_data[:monthly]
+  ) %>
+
+  <%= render GeographyComponent.new(
+    country: geo_data[:country],
+    region: geo_data[:region],
+    city: geo_data[:city]
+  ) %>
+
+  <%= render ReferrerComponent.new(data: referrer_data) %>
+</div>
