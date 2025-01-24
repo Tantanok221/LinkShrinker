@@ -5,10 +5,12 @@ class ShortLink < ApplicationRecord
   validates :short_code, presence: true, uniqueness: true, length: { maximum: 15 }
 
   has_many :clicks, dependent: :destroy
-
+  before_validation :normalize_target_url
   before_validation :generate_short_code, on: :create
 
   after_create :extract_title
+
+  Logger = AppLogger.new("ShortLinkModels")
 
   def generate_short_code
     return if short_code.present?
@@ -20,13 +22,19 @@ class ShortLink < ApplicationRecord
   end
 
   def extract_title
-    Rails.logger.info "Target url from the incoming request: #{target_url}"
+    Logger.info("Extracting page title", url: target_url)
+
     doc = Nokogiri::HTML(URI.open(target_url))
     self.title = doc.at_css("title").text.strip
-    Rails.logger.info "Title from the incoming url: #{title}"
+    Logger.info("Title extraction successful", title: title)
     save
   rescue StandardError => e
-    # Handle errors (e.g., invalid URL, connection issues)
-    Rails.logger.error "Failed to extract title for URL: #{target_url}. Error: #{e.message}"
+    Logger.error("Title extraction failed",
+                 url: target_url,
+                 error: e.message)
+  end
+
+  def normalize_target_url
+    self.target_url = UrlNormalizer.normalize(target_url)
   end
 end
