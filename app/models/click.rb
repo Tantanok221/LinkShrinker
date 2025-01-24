@@ -23,8 +23,10 @@ class Click < ApplicationRecord
             city: short_link.clicks.group(:city).count
           },
           referrer_data: short_link.clicks.group(:referrer).count
-        )
-      )
+        ),
+        layout: false
+      ),
+
     )
   end
 end
