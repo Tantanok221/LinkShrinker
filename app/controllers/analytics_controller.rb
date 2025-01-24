@@ -18,13 +18,13 @@ class AnalyticsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        render Analytic::MainComponent.new(
+        render(AnalyticsComponent.new(
           short_link: @short_link,
           total_clicks: @short_link.clicks.count,
           time_data: analytics_data[:time],
           geo_data: analytics_data[:geo],
           referrer_data: analytics_data[:referrers]
-        )
+        ))
       end
       format.turbo_stream
     end

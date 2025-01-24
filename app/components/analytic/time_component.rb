@@ -1,4 +1,4 @@
-class Analytics::TimeAnalysisComponent < ViewComponent::Base
+class Analytic::TimeComponent < ViewComponent::Base
   include Chartkick::Helper
 
   def initialize(daily:, weekly:, monthly:)

@@ -1,4 +1,4 @@
-class Analytics::GeographyComponent < ViewComponent::Base
+class Analytic::GeographyComponent < ViewComponent::Base
   include Chartkick::Helper
 
   def initialize(country:, region:, city:)

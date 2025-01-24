@@ -15,14 +15,14 @@ class ShortLinksController < ApplicationController
   end
 
   def delete
-    ShortLink.find(params[:short_code]).destroy
+    @short_link = ShortLink.find(params[:id])
   end
 
   def redirect
     @short_link = ShortLink.find_by(short_code: params[:short_code])
     @short_link.increment!(:clicks_count)
     ip_address = request.remote_ip
-    # Rails.logger.info request.remote_ip
+    Rails.logger.info request.remote_ip
     location = Geocoder.search(ip_address).first
 
     Click.create!(short_link: @short_link,

@@ -1,4 +1,4 @@
-class Analytics::ReferrerComponent < ViewComponent::Base
+class Analytic::ReferrerComponent < ViewComponent::Base
   def initialize(data:)
     @data = data
   end

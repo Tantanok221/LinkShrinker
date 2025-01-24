@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   root to: "home#index"
   resources :short_links, only: [:create]
-  get '/r/:short_code', to: 'short_links#redirect', as: :redirect
-  get '/analytics/:short_code', to: 'analytics#show', as: :analytics
+  get "/r/:short_code", to: "short_links#redirect", as: :redirect
+  get "/analytics/:short_code", to: "analytics#show", as: :analytics
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker

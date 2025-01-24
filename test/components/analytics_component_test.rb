@@ -2,11 +2,11 @@
 
 require "test_helper"
 
-class Analytic::MainComponentTest < ViewComponent::TestCase
+class AnalyticsComponentTest < ViewComponent::TestCase
   def test_component_renders_something_useful
     # assert_equal(
     #   %(<span>Hello, components!</span>),
-    #   render_inline(Analytic::MainComponent.new(message: "Hello, components!")).css("span").to_html
+    #   render_inline(AnalyticsComponent.new(message: "Hello, components!")).css("span").to_html
     # )
   end
 end

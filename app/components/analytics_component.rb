@@ -1,4 +1,6 @@
-class Analytics::AnalyticsComponent < ViewComponent::Base
+# frozen_string_literal: true
+
+class AnalyticsComponent < ViewComponent::Base
   include Chartkick::Helper
 
   def initialize(short_link:, total_clicks:, time_data:, geo_data:, referrer_data:)
