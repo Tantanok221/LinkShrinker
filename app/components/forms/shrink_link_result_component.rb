@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Card::ShrinkLinkResultComponent < ViewComponent::Base
+class Forms::ShrinkLinkResultComponent < ViewComponent::Base
   def initialize(link:)
     @link = link
   end
