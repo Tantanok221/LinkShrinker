@@ -1,0 +1,11 @@
+<%= turbo_stream.replace "analytics_container" do %>
+  <%= render "analytics/show",
+             short_link: @short_link,
+             total_clicks: @total_clicks,
+             clicks_by_day: @clicks_by_day,
+             clicks_by_country: @clicks_by_country,
+             clicks_by_region: @clicks_by_region,
+             clicks_by_city: @clicks_by_city,
+             clicks_by_referrer: @clicks_by_referrer
+  %>
+<% end %>
