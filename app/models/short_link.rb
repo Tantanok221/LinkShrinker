@@ -22,11 +22,7 @@ class ShortLink < ApplicationRecord
   end
 
   def extract_title
-    Logger.info("Extracting page title", url: target_url)
-
-    doc = Nokogiri::HTML(URI.open(target_url))
-    self.title = doc.at_css("title").text.strip
-    Logger.info("Title extraction successful", title: title)
+    self.title = PageExtractor.new(target_url).call
     save
   rescue StandardError => e
     Logger.error("Title extraction failed",
