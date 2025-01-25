@@ -25,9 +25,11 @@ class ShortLink < ApplicationRecord
     self.title = PageExtractor.new(target_url).call
     save
   rescue StandardError => e
+    self.title = "None"
     Logger.error("Title extraction failed",
                  url: target_url,
                  error: e.message)
+    save
   end
 
   def normalize_target_url
