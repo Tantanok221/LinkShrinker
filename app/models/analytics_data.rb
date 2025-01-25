@@ -5,11 +5,23 @@ class AnalyticsData
     @short_link = short_link
     @total_clicks = total_clicks
     @time_data = format_time_data(time_data)
-    @geo_data = geo_data
-    @referrer_data = referrer_data
+    @geo_data = format_geo_data(geo_data)
+    @referrer_data = normalize_data(referrer_data)
   end
 
   private
+
+  def format_geo_data(data)
+    {
+      country: normalize_data(data[:country]),
+      region: normalize_data(data[:region]),
+      city: normalize_data(data[:city]),
+    }
+  end
+
+  def normalize_data(raw_data)
+    raw_data.transform_keys { |data| data.nil? ? "None" : data }
+  end
 
   def format_time_data(raw_time_data)
     {
