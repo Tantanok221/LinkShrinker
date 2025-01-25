@@ -1,7 +1,3 @@
-require "logger"
-require_relative "url_fetcher"
-require_relative "title_parser"
-
 class PageExtractor
   attr_accessor :title
 

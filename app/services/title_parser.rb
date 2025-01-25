@@ -1,5 +1,3 @@
-require "nokogiri"
-
 class TitleParser
   class TitleParseError < StandardError; end
 

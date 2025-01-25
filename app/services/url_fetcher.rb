@@ -1,5 +1,3 @@
-require "open-uri"
-
 class UrlFetcher
   class UrlFetchError < StandardError; end
 
