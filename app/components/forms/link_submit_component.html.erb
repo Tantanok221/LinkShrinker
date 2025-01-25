@@ -2,6 +2,10 @@
       model: @short_link,
       url: short_links_path,
       method: :post,
+      data: {
+        controller: "short-link-saver",
+        action: "turbo:submit-end->short-link-saver#save_local_storage",
+      },
       class: "md:w-2/3 lg:w-1/3 flex flex-row gap-2"
     ) do |form| %>
   <%= form.text_field :target_url, class: "py-2 px-2 w-full  border-1 border-slate-200 text-muted-foreground rounded-md", placeholder: "Enter your URL here",required: true %>
