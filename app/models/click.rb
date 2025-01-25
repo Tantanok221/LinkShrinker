@@ -8,6 +8,7 @@ class Click < ApplicationRecord
     Turbo::StreamsChannel.broadcast_update_to(
       "analytic/#{short_link.short_code}",
       target: "analytics",
+      partial: "analytics/analytics",
       html: ApplicationController.render(
         AnalyticsComponent.new(analytics_data: short_link.analytics_data),
         layout: false

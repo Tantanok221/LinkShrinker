@@ -1,4 +1,2 @@
-<%= turbo_stream_from "analytic/#{@short_link.short_code}" %>
-<div id="analytics">
-  <%= render AnalyticsComponent.new(analytics_data: @short_link.analytics_data) %>
-</div>
+<%= turbo_page_requires_reload %>
+<%= render "analytics/analytics"%>

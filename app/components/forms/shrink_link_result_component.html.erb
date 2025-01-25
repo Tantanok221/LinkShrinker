@@ -1,7 +1,8 @@
 <div class="p-6 border-slate-200 border w-full flex gap-3 rounded-md flex-col">
   <%= render(TypographyComponent.new(variant: :h2)) do %>
     Your Generated Links
-  <% end %>  <div class="flex gap-1 flex-col">
+  <% end %>
+  <div class="flex gap-1 flex-col">
     <p class="color-slate-950 text-sm">Shortened URL</p>
     <div class="border-slate-200 border rounded-md px-3 py-2 pb-8 pr-10 w-full">
       <%= @link %>
@@ -13,5 +14,10 @@
     >
       Copy via Clipboard
     </button>
+    <%= link_to "View Analytics",
+                analytics_path(@short_code),
+                class: "px-4 py-2 text-white bg-slate-900 rounded-md"
+                # data: {turbo: false}
+    %>
   </div>
 </div>
