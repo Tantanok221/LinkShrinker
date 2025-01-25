@@ -18,7 +18,7 @@ export default class extends Controller {
                     createdAt: new Date().toISOString()
                 });
                 localStorage.setItem('shortenedLinks', JSON.stringify(links));
-            }},1000)
+            }},10)
         }
     }
 }
