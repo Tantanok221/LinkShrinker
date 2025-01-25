@@ -1,0 +1,6 @@
+<ul role="list" class="divide-y divide-gray-200">
+  <%= render Stats::Subcomponent::ColumnHeaderComponent.new(period_label: @period_label) %>
+  <% @data.each do |date, count| %>
+    <%= render Stats::Subcomponent::ItemComponent.new(date: date, count: count) %>
+  <% end %>
+</ul>

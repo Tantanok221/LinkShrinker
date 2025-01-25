@@ -1,5 +1,4 @@
 class Analytic::TimeComponent < ViewComponent::Base
-  include Chartkick::Helper
 
   def initialize(daily:, weekly:, monthly:)
     @daily = daily

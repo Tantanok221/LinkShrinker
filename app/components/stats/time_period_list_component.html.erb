@@ -1,0 +1,6 @@
+<div class="p-4 bg-gray-50 rounded-lg">
+  <%= render Stats::Subcomponent::HeaderComponent.new(title: @title) %>
+  <div class="flow-root">
+    <%= render Stats::Subcomponent::ListComponent.new(data: @data, period_label: @period_label) %>
+  </div>
+</div>
