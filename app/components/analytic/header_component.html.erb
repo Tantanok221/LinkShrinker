@@ -1,4 +1,4 @@
-<div class="bg-white p-6 rounded-lg shadow-sm">
+<%= render Card::StatsComponent.new do %>
   <h1 class="text-2xl font-bold text-gray-800">
     Analytics for <%= short_link.short_code %>
   </h1>
@@ -6,8 +6,12 @@
     Original URL: <%= link_to short_link.target_url, short_link.target_url,
                               class: "text-blue-600 hover:underline" %>
   </p>
-  <div class="mt-4 p-4 bg-blue-50 rounded-lg">
-    <span class="text-3xl font-bold text-blue-600"><%= total_clicks %></span>
-    <span class="text-gray-600 ml-2">total clicks</span>
-  </div>
-</div>
+<% end %>
+<%= render Card::StatsComponent.new do %>
+  <h3 class="text-lg font-semibold mb-2">
+    Total Clicks
+  </h3>
+  <p class="text-3xl font-bold">
+    <%= total_clicks %>
+  </p>
+<% end %>
