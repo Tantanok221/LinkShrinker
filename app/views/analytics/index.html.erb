@@ -1,0 +1,31 @@
+<div class="grid grid-cols-2">
+  <% @short_links.each do |short_link| %>
+    <%= render Card::StatsComponent.new do %>
+      <div class="flex flex-col gap-4">
+        <div>
+          <p class="text-sm text-gray-500 mb-1">Title of the URL:</p>
+          <p class="text-gray-800 mb-2">
+            <%= short_link.title %>
+          </p>
+        </div>
+        <div>
+          <p class="text-sm text-gray-500 mb-1">Original URL:</p>
+          <p class="text-gray-800 mb-2">
+            <%= short_link.target_url %>
+          </p>
+        </div>
+        <div>
+          <p class="text-sm text-gray-500 mb-1">Shortened URL:</p>
+          <%= link_to analytics_url(short_link.short_code), analytics_path(short_link.short_code),
+                      class: "text-blue-600 hover:underline"
+          %>
+        </div>
+        <%= link_to "View Analytics",
+                    analytics_path(short_link.short_code),
+                    class: "px-4 py-2 text-white bg-slate-900 text-center rounded-md"
+        %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+

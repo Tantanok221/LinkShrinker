@@ -4,4 +4,9 @@ class AnalyticsController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path, alert: "Analytics not found"
   end
+
+  def index
+    @short_links = ShortLink.where(user_id: cookies.signed[:session_uuid])
+
+  end
 end
