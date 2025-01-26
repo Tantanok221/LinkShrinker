@@ -1,6 +1,7 @@
 class ShortLinksController < ApplicationController
   def create
     @short_link = ShortLink.new(short_link_params)
+    @short_link.user_id = cookies.signed[:session_uuid]
     respond_to do |format|
       if @short_link.save
         format.turbo_stream

@@ -26,7 +26,7 @@ class ShortLink < ApplicationRecord
     save
   rescue StandardError => e
     self.title = "None"
-    Logger.error("Title extraction failed",
+    Logger.warn("Title extraction failed",
                  url: target_url,
                  error: e.message)
     save
