@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :short_links, only: [:create]
   get "/r/:short_code", to: "short_links#redirect", as: :redirect
   get "/analytics/:short_code", to: "analytics#show", as: :analytics
-  get "/analytics", to: "analytics#index"
+  get "/analytics", to: "analytics#index", as: :analytics_index
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
