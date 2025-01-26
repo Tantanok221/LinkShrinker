@@ -1,10 +1,10 @@
-<div class="border-b-2 border-slate-100 py-4 flex flex-row justify-between px-8  ">
+<div class="border-b-2 border-slate-100 py-4 flex flex-row justify-between px-8 items-end">
   <%= render(TypographyComponent.new(variant: :h1)) do %>
     LinkShrinker
   <% end %>
 
-  <div class="flex flex-row gap-4">
-    <%= link_to "Home", root_path, class: "text-gray-500" %>
-    <%= link_to "Analytics", analytics_index_path, class: "text-gray-500" %>
+  <div class="flex flex-row gap-4 h-full">
+    <%= nav_link_to "Home", root_path %>
+    <%= nav_link_to "Analytics", analytics_index_path %>
   </div>
 </div>

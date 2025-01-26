@@ -7,6 +7,5 @@ class AnalyticsController < ApplicationController
 
   def index
     @short_links = ShortLink.where(user_id: cookies.signed[:session_uuid])
-
   end
 end
