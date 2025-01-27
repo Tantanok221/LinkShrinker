@@ -16,7 +16,7 @@
         </div>
         <div>
           <p class="text-sm text-gray-500 mb-1">Shortened URL:</p>
-          <%= link_to analytics_url(short_link.short_code), analytics_path(short_link.short_code),
+          <%= link_to redirect_url(short_link.short_code), analytics_path(short_link.short_code),
                       class: "text-blue-600 hover:underline"
           %>
         </div>
