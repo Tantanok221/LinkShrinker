@@ -24,7 +24,7 @@ class ShortLinksController < ApplicationController
   def redirect
     @short_link = ShortLink.find_by(short_code: params[:short_code])
     @short_link.increment!(:clicks_count)
-    ClickTracker.new(request: request, model: Click).track_click(@short_link)
+    ClickTracker.track_click(request, @short_link)
     redirect_to @short_link.target_url, allow_other_host: true
   end
 

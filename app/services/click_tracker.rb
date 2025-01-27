@@ -1,17 +1,22 @@
 class ClickTracker
-  def initialize(request:,model:)
+  def self.track_click(request, short_link, model: Click)
+    new(request, model: model).save(short_link)
+  end
+
+  def initialize(request, model: Click)
     @request = request
     @model = model
   end
 
-  def track_click(short_link)
+  def save(short_link)
     @model.create!({ short_link: short_link,
-                    **self.build_click_attributes
-                  })
+                     **self.build_click_attributes
+                   })
   end
 
   private
-  def build_click_attributes( location_tracker: LocationTracker)
+
+  def build_click_attributes(location_tracker: LocationTracker)
     location = location_tracker.track(@request)
     {
       ip_address: @request.remote_ip,
