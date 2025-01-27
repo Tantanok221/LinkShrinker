@@ -1,6 +1,4 @@
 class AnalyticsComponent < ViewComponent::Base
-  include Chartkick::Helper
-
   def initialize(analytics_data:)
     @analytics_data = analytics_data
   end
