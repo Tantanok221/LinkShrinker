@@ -11,6 +11,10 @@ class AppLogger
     log(:error, message, details)
   end
 
+  def warn(message, details = {})
+    log(:warn, message, details)
+  end
+
   private
 
   def log(level, message, details)
