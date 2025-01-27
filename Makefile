@@ -8,3 +8,7 @@ install:
 	@bundle install
 	@rails db:setup
 	@rails db:migrate
+
+format:
+	@rubocop -a
+	@rubocop -x
