@@ -6,3 +6,5 @@ dev:
 
 install:
 	@bundle install
+	@rails db:setup
+	@rails db:migrate
