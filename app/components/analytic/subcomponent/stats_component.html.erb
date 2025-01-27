@@ -1,0 +1,8 @@
+<%= render Card::BaseComponent.new do %>
+  <%= render(TypographyComponent.new(variant: :h2)) do %>
+    <%= @title %>
+  <% end %>
+  <p class="text-base font-normal">
+    <%= @stats %>
+  </p>
+<% end %>
