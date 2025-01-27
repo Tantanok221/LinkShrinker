@@ -1,4 +1,4 @@
-require 'open-uri'
+require "open-uri"
 
 class ShortLink < ApplicationRecord
   validates :target_url, presence: true, format: URI::DEFAULT_PARSER.make_regexp(%w[http https])
@@ -14,11 +14,14 @@ class ShortLink < ApplicationRecord
 
   def generate_short_code
     return if short_code.present?
-
-    loop do
-      self.short_code = SecureRandom.alphanumeric(15)
-      break unless ShortLink.exists?(short_code: short_code)
-    end
+    timestamp = (Time.now.to_i * 1000) & 0xFFFFFFFFFF # 40 bits
+    worker_id = 1111100000 # temp for now, since we are not deploying multiple instance
+    sequence = SequenceCounter.next
+    Logger.info("seed: #{timestamp},#{worker_id},#{sequence}")
+    id = (timestamp << 49) | (worker_id << 39) | sequence
+    Logger.info("id: #{id}")
+    id = id.base62_encode.rjust(15, "0")
+    self.short_code = id
   end
 
   def extract_title
