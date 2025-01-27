@@ -25,19 +25,7 @@ class ShortLinksController < ApplicationController
   def redirect
     @short_link = ShortLink.find_by(short_code: params[:short_code])
     @short_link.increment!(:clicks_count)
-    ip_address = request.remote_ip
-    Rails.logger.info request.remote_ip
-    location = Geocoder.search(ip_address).first
-
-    Click.create!(short_link: @short_link,
-                  ip_address: request.remote_ip,
-                  user_agent: request.user_agent,
-                  referrer: request.referrer,
-                  country: location.country,
-                  region: location.region,
-                  city: location.city,
-                  created_at: Time.now,
-                  updated_at: Time.now,)
+    ClickTracker.new(request: request, model: Click).track_click(@short_link)
     redirect_to @short_link.target_url, allow_other_host: true
   end
 
