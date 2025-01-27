@@ -1,12 +1,12 @@
-<div class="p-6 border-slate-200 border w-full flex gap-3 rounded-md gap-4 flex-col"
+<div class="p-6 border-slate-200 border w-full flex gap-3 rounded-md gap-4 flex-col md:min-w-md md-max-w-md  max-w-sm"
      data-short-url="<%= @redirect_link %>"
      data-target-url="<%= @target_url %>"
      id="shrink-link-result"
 >
   <div class="flex gap-2 flex-col">
-  <%= render(TypographyComponent.new(variant: :h2)) do %>
-    Your Generated Links
-  <% end %>
+    <%= render(TypographyComponent.new(variant: :h2)) do %>
+      Your Generated Links
+    <% end %>
     <p class="color-slate-950 text-sm">Shortened URL</p>
     <div class="border-slate-200 border rounded-md px-3 py-2 pb-8 pr-10 w-full">
       <%= @redirect_link %>
