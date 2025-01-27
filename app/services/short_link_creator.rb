@@ -1,5 +1,5 @@
 class ShortLinkCreator
-  def self.create(short_link_params, user_id, model: ShortLink, logger: AppLogger.new("ShortLinkCreator"))
+  def self.save(short_link_params, user_id, model: ShortLink, logger: AppLogger.new("ShortLinkCreator"))
     new(short_link_params, user_id, model: model, logger: logger).save
   end
 
