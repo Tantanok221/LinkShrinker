@@ -6,6 +6,7 @@ class ShortLinkCreator
   def initialize(short_link_params, user_id, model: ShortLink, logger: AppLogger)
     @short_link = model.new(short_link_params)
     @short_link.user_id = user_id
+    @short_link.clicks_count = 0
     @logger = logger
   end
 

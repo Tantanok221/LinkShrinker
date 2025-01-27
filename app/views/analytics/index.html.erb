@@ -20,6 +20,12 @@
                       class: "text-blue-600 hover:underline"
           %>
         </div>
+        <div>
+          <p class="text-sm text-gray-500 mb-1">Total Clicks:</p>
+          <p class="text-gray-800 mb-2">
+            <%= short_link.clicks_count %>
+          </p>
+        </div>
         <%= link_to "View Analytics",
                     analytics_path(short_link.short_code),
                     class: "px-4 py-2 text-white bg-slate-900 text-center rounded-md"
