@@ -1,4 +1,4 @@
-class AnalyticsComponent < ViewComponent::Base
+class Analytic::AnalyticsComponent < ViewComponent::Base
   def initialize(analytics_data:)
     @analytics_data = analytics_data
   end

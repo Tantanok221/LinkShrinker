@@ -1,4 +1,4 @@
-class Analytic::TimeComponent < ViewComponent::Base
+class Analytic::Subcomponent::TimeComponent < ViewComponent::Base
 
   def initialize(daily:, weekly:, monthly:)
     @daily = daily

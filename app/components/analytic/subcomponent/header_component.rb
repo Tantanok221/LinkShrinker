@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Analytic::HeaderComponent < ViewComponent::Base
+class Analytic::Subcomponent::HeaderComponent < ViewComponent::Base
 
   def initialize(short_link:,total_clicks:)
     @short_link = short_link

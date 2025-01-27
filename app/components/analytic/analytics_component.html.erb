@@ -1,0 +1,17 @@
+<div id="analytics" class="flex gap-8 w-full flex-col min-h-screen">
+  <%= render Analytic::Subcomponent::HeaderComponent.new(short_link: short_link, total_clicks: total_clicks) %>
+
+  <%= render Analytic::Subcomponent::TimeComponent.new(
+    daily: time_data[:daily],
+    weekly: time_data[:weekly],
+    monthly: time_data[:monthly]
+  ) %>
+
+  <%= render Analytic::Subcomponent::GeographyComponent.new(
+    country: geo_data[:country],
+    region: geo_data[:region],
+    city: geo_data[:city]
+  ) %>
+
+  <%= render Analytic::Subcomponent::ReferrerComponent.new(data: referrer_data) %>
+</div>
