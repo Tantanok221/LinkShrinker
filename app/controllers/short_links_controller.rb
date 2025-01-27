@@ -6,7 +6,10 @@ class ShortLinksController < ApplicationController
       if @short_link.save
         format.turbo_stream
       else
-        put "Something went wrong!"
+        Rails.logger.error "Something went wrong!"
+        format.turbo_stream do
+          render :error, locals: { message: "Save to database operation went wrong, please contact website administrator!" }
+        end
       end
     end
   end

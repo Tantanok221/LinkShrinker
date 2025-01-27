@@ -1,0 +1,7 @@
+<%= turbo_stream.replace "short_link_frame" do %>
+  <%= turbo_frame_tag "short_link_frame" do %>
+    <div id="error_message" class="border border-red-500 px-4 py-2 text-red-500">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
