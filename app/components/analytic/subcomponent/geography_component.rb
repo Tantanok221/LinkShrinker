@@ -1,5 +1,4 @@
 class Analytic::Subcomponent::GeographyComponent < ViewComponent::Base
-
   def initialize(country:, region:, city:)
     @country = country
     @region = region

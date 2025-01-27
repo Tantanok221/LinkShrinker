@@ -14,5 +14,4 @@ class Stats::TimePeriodListComponent < ViewComponent::Base
     raise ArgumentError, "Data must be a hash" unless data.is_a?(Hash)
     data
   end
-
 end

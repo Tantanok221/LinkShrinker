@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
   root to: "home#index"
-  resources :short_links, only: [:create]
+  resources :short_links, only: [ :create ]
   get "/r/:short_code", to: "short_links#redirect", as: :redirect
   get "/analytics/:short_code", to: "analytics#show", as: :analytics
   get "/analytics", to: "analytics#index", as: :analytics_index

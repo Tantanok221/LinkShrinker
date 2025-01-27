@@ -7,7 +7,7 @@ class AnalyticsController < ApplicationController
   end
 
   def index
-    @short_links = ShortLink.where(user_id: cookies.signed[:session_uuid])
+    @short_links = ShortLink.where(user_id: cookies.signed[:session_uuid]).order(short_code: :asc)
     if @short_links.empty?
       render :not_available
     end
