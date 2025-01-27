@@ -6,7 +6,8 @@ class TypographyComponent < ViewComponent::Base
     @class = classes
     @classes = case variant
                when :h1 then "text-3xl font-semibold font-sans"
-               when :h2 then "text-1xl font-semibold font-sans"
+               when :h2 then "text-lg font-medium font-sans"
+               when :h3 then "text-xl font-medium font-sans"
     end
   end
 end
