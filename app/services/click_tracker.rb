@@ -26,7 +26,7 @@ class ClickTracker
       region: location&.region,
       city: location&.city,
       created_at: Time.now,
-      updated_at: Time.now,
+      updated_at: Time.now
     }
   end
 end

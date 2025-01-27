@@ -15,7 +15,7 @@ class AnalyticsData
     {
       country: normalize_data(data[:country]),
       region: normalize_data(data[:region]),
-      city: normalize_data(data[:city]),
+      city: normalize_data(data[:city])
     }
   end
 

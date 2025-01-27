@@ -1,7 +1,7 @@
 class PageExtractor
   attr_accessor :title
 
-  def initialize(target_url, logger: AppLogger.new('page_extractor'), fetcher: UrlFetcher, parser: TitleParser)
+  def initialize(target_url, logger: AppLogger.new("page_extractor"), fetcher: UrlFetcher, parser: TitleParser)
     @target_url = target_url
     @logger = logger
     @fetcher = fetcher
