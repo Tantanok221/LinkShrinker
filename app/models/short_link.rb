@@ -40,12 +40,19 @@ class ShortLink < ApplicationRecord
   end
 
   def analytics_data
-    AnalyticsData.new(
+    cached = Rails.cache.fetch("analytics_#{self.short_code}")
+    if cached.present?
+      Rails.logger.info "[ShortLink] cache hit: #{cached.inspect}"
+      return AnalyticsData.new(**cached)
+    end
+    Rails.logger.info "[ShortLink] cache miss!"
+
+    data = {
       short_link: self,
       total_clicks: clicks.count,
       time_data: {
         daily: clicks.group_by_day(:created_at).count,
-        weekly: clicks.group_by_week(:created_at).count,
+      weekly: clicks.group_by_week(:created_at).count,
         monthly: clicks.group_by_month(:created_at).count
       },
       geo_data: {
@@ -54,6 +61,10 @@ class ShortLink < ApplicationRecord
         city: clicks.group(:city).count
       },
       referrer_data: clicks.group(:referrer).count
+    }
+    Rails.cache.write("analytics_#{self.short_code}", data)
+    AnalyticsData.new(
+      **data
     )
   end
 end

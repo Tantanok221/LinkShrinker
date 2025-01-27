@@ -1,7 +1,7 @@
 class Click < ApplicationRecord
   belongs_to :short_link
   after_create_commit :broadcast_analytics_update
-
+  after_save :invalidate_analytics_cache
   private
 
   def broadcast_analytics_update
@@ -14,4 +14,10 @@ class Click < ApplicationRecord
       ),
     )
   end
+
+  def invalidate_analytics_cache
+    Rails.cache.delete("analytics_#{short_link.short_code}")
+  end
+
+
 end
