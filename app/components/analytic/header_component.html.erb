@@ -1,5 +1,5 @@
 <div class="grid md:grid-cols-2 grid-cols-1 gap-8">
-  <%= render Card::StatsComponent.new do %>
+  <%= render Card::BaseComponent.new do %>
     <%= render(TypographyComponent.new(variant: :h2)) do %>
       Total Clicks
     <% end %>
@@ -7,7 +7,7 @@
       <%= total_clicks %>
     </p>
   <% end %>
-  <%= render Card::StatsComponent.new do %>
+  <%= render Card::BaseComponent.new do %>
     <%= render(TypographyComponent.new(variant: :h2)) do %>
       Short URL
     <% end %>
@@ -15,7 +15,7 @@
       <%= "#{root_url}r/#{@short_link.short_code}" %>
     </p>
   <% end %>
-  <%= render Card::StatsComponent.new do %>
+  <%= render Card::BaseComponent.new do %>
     <%= render(TypographyComponent.new(variant: :h2)) do %>
       Destination URL
     <% end %>
@@ -23,7 +23,7 @@
       <%= @short_link.target_url %>
     </p>
   <% end %>
-  <%= render Card::StatsComponent.new do %>
+  <%= render Card::BaseComponent.new do %>
     <%= render(TypographyComponent.new(variant: :h2)) do %>
       Title of the URL
     <% end %>
