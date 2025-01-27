@@ -16,13 +16,13 @@
     <button data-controller="clipboard"
             data-clipboard-text-value="<%= @redirect_link %>"
             data-action="click->clipboard#copy"
-            class="px-4 py-2 w-full text-white bg-slate-900 rounded-md"
+            class="w-full text-center py-2 px-4 bg-slate-900 text-white rounded-md hover:bg-slate-750 cursor-pointer"
     >
       Copy via Clipboard
     </button>
     <%= link_to "View Analytics",
                 analytics_path(@short_code),
-                class: "px-4 py-2 w-full text-white bg-slate-900 text-center rounded-md"
+                class: "w-full text-center py-2 px-4 bg-slate-900 text-white rounded-md hover:bg-slate-750 cursor-pointer"
     %>
   </div>
 </div>
