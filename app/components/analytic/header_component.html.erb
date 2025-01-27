@@ -1,4 +1,4 @@
-<div class="grid md:grid-cols-2 grid-cols-1 gap-8">
+<div class="grid md:grid-cols-2 grid-cols-1 gap-6">
   <%= render(Analytic::Subcomponent::StatsComponent.new(title: "Total Clicks", stats: total_clicks)) %>
   <%= render(Analytic::Subcomponent::StatsComponent.new(title: "Short URL", stats: redirect_url(@short_link.short_code))) %>
   <%= render(Analytic::Subcomponent::StatsComponent.new(title: "Destination URL", stats: @short_link.target_url)) %>

@@ -1,4 +1,4 @@
-<div id="analytics" class="p-6 space-y-8 min-h-screen">
+<div id="analytics" class="flex gap-8 w-full flex-col min-h-screen">
   <%= render Analytic::HeaderComponent.new(short_link: short_link, total_clicks: total_clicks) %>
 
   <%= render Analytic::TimeComponent.new(
