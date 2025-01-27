@@ -1,9 +1,8 @@
 class ShortLinksController < ApplicationController
   def create
-    @short_link = ShortLink.new(short_link_params)
-    @short_link.user_id = cookies.signed[:session_uuid]
     respond_to do |format|
-      if @short_link.save
+      @short_link = ShortLinkCreator.create(short_link_params,cookies.signed[:session_uuid])
+      if @short_link
         format.turbo_stream
       else
         Rails.logger.error "Something went wrong!"
