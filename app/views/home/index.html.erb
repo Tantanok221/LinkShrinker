@@ -2,6 +2,7 @@
   <%= render(TypographyComponent.new(variant: :h1)) do %>
     Shrink Your Link In Seconds
   <% end %>
+  <div class="text-gray-500">Total Link Generated: <%= @counts %></div>
   <%= render(Forms::LinkSubmitComponent.new(short_link: @short_link)) %>
   <%= turbo_frame_tag "short_link_frame" %>
 </div>

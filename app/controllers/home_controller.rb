@@ -3,6 +3,7 @@ class HomeController < ApplicationController
 
   def index
     @short_link = ShortLink.new
+    @counts = SequenceCounter.get
   end
 
   def set_session_uuid
