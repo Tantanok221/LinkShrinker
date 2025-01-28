@@ -1,24 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a link shortener website that shortened url and track analytic of the shortened url
 
-Things you may want to cover:
+### Installation Guide
+Ruby version: 8.0.1
 
-* Ruby version
+install dependencies & setup database
+```
+make install
+```
+Launch Dev Server
+```
+make dev
+```
+The dev server will launch at localhost:3000
 
-* System dependencies
+### Deployment Guide
+Each code that are push/merged to master will automatically deployed to the production instance(via railways ci/cd)
 
-* Configuration
+Production URL:  [Production Instances](https://linkshrinker-production.up.railway.app/)
 
-* Database creation
+### Tech Stacks
+Frontend/Backend: Ruby on Rails with Turbowire  
+Database: SQLite   
+Cache: SQLite(solid cache)  
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Read More
+More details related about this project are at /docs
