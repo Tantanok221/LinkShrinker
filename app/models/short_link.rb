@@ -14,13 +14,14 @@ class ShortLink < ApplicationRecord
 
   def generate_short_code
     return if short_code.present?
-    timestamp = (Time.now.to_i * 1000) & 0xFFFFFFFFFF # 40 bits
-    worker_id = 1111100000 # temp for now, since we are not deploying multiple instance
-    sequence = SequenceCounter.next
-    Logger.info("seed: #{timestamp},#{worker_id},#{sequence}")
-    id = (timestamp << 49) | (worker_id << 39) | sequence
+    timestamp = (Time.now.to_i * 1000) & 0xFFFFFFFF # 32 bits
+    sequence = SequenceCounter.next & 0xFFFF # 16 bits
+    Logger.info("seed: #{timestamp}, #{sequence}")
+    # Combine timestamp and sequence
+    id = (timestamp << 16) | sequence
     Logger.info("id: #{id}")
-    id = id.base62_encode.rjust(15, "0")
+    # Base62 encode and ensure 8 characters with leading zeros if needed
+    id = id.base62_encode.rjust(8, "0")
     self.short_code = id
   end
 
