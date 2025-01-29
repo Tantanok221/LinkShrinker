@@ -1,4 +1,4 @@
-.PHONY: dev install
+.PHONY: dev install format test
 
 dev:
 	@echo "Starting development server..."
