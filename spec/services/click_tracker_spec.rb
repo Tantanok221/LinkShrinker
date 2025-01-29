@@ -7,18 +7,19 @@ RSpec.describe ClickTracker do
       'Request',
       remote_ip: '123.45.67.89',
       user_agent: 'TestAgent',
-      referrer: 'http://example.com'
+      referrer: 'http://example.com',
+      headers: { 'X-Real-IP' => '123.45.67.89' }
+
     )
   end
   let(:short_link) { double('ShortLink') }
   let(:location) { double('Location', country: 'TestCountry', region: 'TestRegion', city: 'TestCity') }
   let(:model) { double('Model') }
+  let(:logger) { double('Logger',info: true) }
 
   describe '.track_click' do
     it 'creates a click with the correct attributes using the specified model' do
-      allow(LocationTracker).to receive(:track).with(request).and_return(location)
-      current_time = Time.now
-      allow(Time).to receive(:now).and_return(current_time)
+      allow(LocationTracker).to receive(:track).with("123.45.67.89").and_return(location)
 
       expected_attributes = {
         short_link: short_link,
@@ -28,19 +29,17 @@ RSpec.describe ClickTracker do
         country: location.country,
         region: location.region,
         city: location.city,
-        created_at: current_time,
-        updated_at: current_time
       }
 
-      expect(model).to receive(:create!).with(expected_attributes)
-      described_class.track_click(request, short_link, model: model)
+      expect(model).to receive(:create!).with(hash_including(expected_attributes))
+      described_class.track_click(request, short_link, model: model, logger: logger)
     end
   end
 
   describe '#save' do
     it 'uses the current time for timestamps' do
-      click_tracker = described_class.new(request, model: model)
-      allow(LocationTracker).to receive(:track).with(request).and_return(location)
+      click_tracker = described_class.new(request, model: model, logger: logger)
+      allow(LocationTracker).to receive(:track).with("123.45.67.89").and_return(location)
       current_time = Time.now
       allow(Time).to receive(:now).and_return(current_time)
 
@@ -55,8 +54,8 @@ RSpec.describe ClickTracker do
   describe 'handling location data' do
     context 'when location is present' do
       it 'includes location attributes' do
-        click_tracker = described_class.new(request, model: model)
-        allow(LocationTracker).to receive(:track).with(request).and_return(location)
+        click_tracker = described_class.new(request, model: model, logger: logger)
+        allow(LocationTracker).to receive(:track).with("123.45.67.89").and_return(location)
 
         expect(model).to receive(:create!).with(
           hash_including(
@@ -72,8 +71,8 @@ RSpec.describe ClickTracker do
 
     context 'when location is nil' do
       it 'sets location attributes to nil' do
-        click_tracker = described_class.new(request, model: model)
-        allow(LocationTracker).to receive(:track).with(request).and_return(nil)
+        click_tracker = described_class.new(request, model: model, logger: logger)
+        allow(LocationTracker).to receive(:track).with("123.45.67.89").and_return(nil)
 
         expect(model).to receive(:create!).with(
           hash_including(
