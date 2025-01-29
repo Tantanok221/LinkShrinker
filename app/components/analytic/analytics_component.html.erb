@@ -7,8 +7,6 @@
     monthly: time_data[:monthly]
   ) %>
 
-  <%= geo_data.inspect %>
-
   <%= render Analytic::Subcomponent::GeographyComponent.new(
     country: geo_data[:country],
     region: geo_data[:region],
