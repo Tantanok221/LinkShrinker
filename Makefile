@@ -12,3 +12,7 @@ install:
 format:
 	@rubocop -a
 	@rubocop -x
+
+test:
+	@rails test
+	@bundle exec rspec
