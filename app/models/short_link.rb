@@ -13,16 +13,7 @@ class ShortLink < ApplicationRecord
   Logger = AppLogger.new("ShortLinkModels")
 
   def generate_short_code
-    return if short_code.present?
-    timestamp = (Time.now.to_i * 1000) & 0xFFFFFFFF # 32 bits
-    sequence = SequenceCounter.next & 0xFFFF # 16 bits
-    Logger.info("seed: #{timestamp}, #{sequence}")
-    # Combine timestamp and sequence
-    id = (timestamp << 16) | sequence
-    Logger.info("id: #{id}")
-    # Base62 encode and ensure 8 characters with leading zeros if needed
-    id = id.base62_encode.rjust(8, "0")
-    self.short_code = id
+    self.short_code = ShortCodeGenerator.generate
   end
 
   def extract_title
@@ -31,8 +22,8 @@ class ShortLink < ApplicationRecord
   rescue StandardError => e
     self.title = "None"
     Logger.warn("Title extraction failed",
-                 url: target_url,
-                 error: e.message)
+                url: target_url,
+                error: e.message)
     save
   end
 
@@ -43,17 +34,17 @@ class ShortLink < ApplicationRecord
   def analytics_data
     cached = Rails.cache.fetch("analytics_#{self.short_code}")
     if cached.present?
-      Rails.logger.info "[ShortLink] cache hit: #{cached.inspect}"
+      Logger.info("[ShortLink] cache hit: #{cached.inspect}")
       return AnalyticsData.new(**cached)
     end
-    Rails.logger.info "[ShortLink] cache miss!"
+    Logger.info("[ShortLink] cache miss!")
 
     data = {
       short_link: self,
       total_clicks: clicks.count,
       time_data: {
         daily: clicks.group_by_day(:created_at).count,
-      weekly: clicks.group_by_week(:created_at).count,
+        weekly: clicks.group_by_week(:created_at).count,
         monthly: clicks.group_by_month(:created_at).count
       },
       geo_data: {
