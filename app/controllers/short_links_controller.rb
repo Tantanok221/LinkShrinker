@@ -12,14 +12,6 @@ class ShortLinksController < ApplicationController
     end
   end
 
-  def show
-    @short_link = ShortLink.find(params[:id])
-  end
-
-  def delete
-    @short_link = ShortLink.find(params[:id])
-  end
-
   def redirect
     @short_link = ShortLink.find_by(short_code: params[:short_code])
     @short_link.increment!(:clicks_count)
