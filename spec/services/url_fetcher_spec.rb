@@ -2,7 +2,7 @@ require 'rspec'
 require 'open-uri'
 require 'services/url_fetcher'
 
-RSpec.describe UrlFetcher do
+describe UrlFetcher do
   let(:valid_url) { 'https://example.com' }
   let(:invalid_url) { 'https://invalid-url.com' }
 

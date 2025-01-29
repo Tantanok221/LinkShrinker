@@ -1,6 +1,6 @@
 require 'services/url_normalizer'
 
-RSpec.describe UrlNormalizer do
+describe UrlNormalizer do
   let(:http_url) { "http://example.com" }
   let(:https_url) { "https://example.com" }
   describe ".normalize" do

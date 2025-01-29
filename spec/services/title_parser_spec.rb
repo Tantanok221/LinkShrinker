@@ -2,7 +2,7 @@ require 'rspec'
 require 'nokogiri'
 require 'services/title_parser' # Adjust the path to your TitleParser file
 
-RSpec.describe TitleParser do
+describe TitleParser do
   describe "#call" do
     context "when the HTML has a valid title" do
       it "returns the title" do
