@@ -7,8 +7,7 @@ class TitleParser
 
   def call
     doc = Nokogiri::HTML(@html)
-    title = doc.at_css("title").text.strip
-    title.empty? ? raise(TitleParseError, "Empty title") : title
+    doc.at_css("title").text.strip
   rescue Nokogiri::SyntaxError => e
     raise TitleParseError, "HTML parsing failed: #{e.message}"
   end
