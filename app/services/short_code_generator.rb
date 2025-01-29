@@ -1,7 +1,7 @@
 class ShortCodeGenerator
-  def self.generate(logger: AppLogger.new("ShortCodeGenerator"))
+  def self.generate(logger: AppLogger.new("ShortCodeGenerator"), sequence_counter: SequenceCounter)
     timestamp = (Time.now.to_i * 1000) & 0xFFFFFFFF # 32 bits
-    sequence = SequenceCounter.next & 0xFFFF # 16 bits
+    sequence = sequence_counter.next & 0xFFFF # 16 bits
     logger.info("seed: #{timestamp}, #{sequence}")
     # Combine timestamp and sequence
     id = (timestamp << 16) | sequence
