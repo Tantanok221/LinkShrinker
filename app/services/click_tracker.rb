@@ -17,7 +17,7 @@ class ClickTracker
   private
 
   def build_click_attributes(location_tracker: LocationTracker)
-    location = location_tracker.track(@request)
+    location = location_tracker.track(@request.remote_ip)
     {
       ip_address: @request.remote_ip,
       user_agent: @request.user_agent,
