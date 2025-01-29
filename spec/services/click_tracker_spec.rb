@@ -15,7 +15,7 @@ RSpec.describe ClickTracker do
   let(:short_link) { double('ShortLink') }
   let(:location) { double('Location', country: 'TestCountry', region: 'TestRegion', city: 'TestCity') }
   let(:model) { double('Model') }
-  let(:logger) { double('Logger',info: true) }
+  let(:logger) { double('Logger', info: true) }
 
   describe '.track_click' do
     it 'creates a click with the correct attributes using the specified model' do
@@ -28,7 +28,7 @@ RSpec.describe ClickTracker do
         referrer: request.referrer,
         country: location.country,
         region: location.region,
-        city: location.city,
+        city: location.city
       }
 
       expect(model).to receive(:create!).with(hash_including(expected_attributes))
