@@ -7,7 +7,7 @@ class UrlFetcher
 
   def call
     URI.open(@url).read
-  rescue OpenURI::HTTPError, SocketError, Timeout::Error, Errno::ECONNREFUSED => e
+  rescue StandardError => e
     raise UrlFetchError, "Failed to fetch URL: #{e.message}"
   end
 end
