@@ -18,18 +18,16 @@ class ClickTracker
   private
 
   def build_click_attributes(location_tracker: LocationTracker)
-    @logger.info "X-Forwarded-For: #{@request.headers['X-Forwarded-For']}"
     @logger.info "X-Real-IP: #{@request.headers['X-Real-IP']}"
     @logger.info "Remote IP: #{@request.remote_ip}"
     location = location_tracker.track(@request.headers["X-Real-IP"])
-    @logger.info(location)
     {
       ip_address: @request.remote_ip,
       user_agent: @request.user_agent,
       referrer: @request.referrer,
-      country: location.country,
-      region: location.region,
-      city: location.city,
+      country: location&.country,
+      region: location&.region,
+      city: location&.city,
       created_at: Time.now,
       updated_at: Time.now
     }
