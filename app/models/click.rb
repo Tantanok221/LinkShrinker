@@ -10,7 +10,7 @@ class Click < ApplicationRecord
       "analytic/#{short_link.short_code}",
       target: "analytics",
       html: ApplicationController.render(
-        AnalyticsComponent.new(analytics_data: short_link.analytics_data),
+        Analytic::AnalyticsComponent.new(analytics_data: short_link.analytics_data),
         layout: false
       ),
     )
