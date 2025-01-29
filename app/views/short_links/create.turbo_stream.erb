@@ -1,5 +1,5 @@
 <%= turbo_stream.replace "short_link_frame" do %>
   <%= turbo_frame_tag "short_link_frame" do %>
-    <%= render(Forms::ShrinkLinkResultComponent.new(redirect_link: "#{root_url}r/#{@short_link.short_code}", short_code: @short_link.short_code, target_url: @short_link.target_url)) %>
+    <%= render(Forms::ShrinkLinkResultComponent.new(redirect_link: "#{root_url}r/#{@short_link.short_code}", short_code: @short_link.short_code, target_url: @short_link.target_url, title: @short_link.title)) %>
   <% end %>
 <% end %>
