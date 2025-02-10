@@ -357,12 +357,12 @@ GEM
     tailwindcss-rails (3.3.0)
       railties (>= 7.0.0)
       tailwindcss-ruby
-    tailwindcss-ruby (4.0.0.beta.9)
-    tailwindcss-ruby (4.0.0.beta.9-aarch64-linux-gnu)
-    tailwindcss-ruby (4.0.0.beta.9-aarch64-linux-musl)
-    tailwindcss-ruby (4.0.0.beta.9-arm64-darwin)
-    tailwindcss-ruby (4.0.0.beta.9-x86_64-linux-gnu)
-    tailwindcss-ruby (4.0.0.beta.9-x86_64-linux-musl)
+    tailwindcss-ruby (4.0.5)
+    tailwindcss-ruby (4.0.5-aarch64-linux-gnu)
+    tailwindcss-ruby (4.0.5-aarch64-linux-musl)
+    tailwindcss-ruby (4.0.5-arm64-darwin)
+    tailwindcss-ruby (4.0.5-x86_64-linux-gnu)
+    tailwindcss-ruby (4.0.5-x86_64-linux-musl)
     thor (1.3.2)
     thruster (0.1.10)
     thruster (0.1.10-aarch64-linux)
@@ -440,7 +440,7 @@ DEPENDENCIES
   sqlite3 (>= 2.1)
   stimulus-rails
   tailwindcss-rails (~> 3.3)
-  tailwindcss-ruby (= 4.0.0.beta.9)
+  tailwindcss-ruby (= 4.0.5)
   thruster
   turbo-rails
   tzinfo-data
